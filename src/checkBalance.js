@@ -8,3 +8,8 @@ var web3=new Web3(url); //Allows access to Ethereum blockchain
 
 const address = "0x73BCEb1Cd57C711feaC4224D062b0F6ff338501e";//random wallet address of the top ether owners
 web3.eth.getBalance(address,(err,bal)=>{console.log(web3.utils.fromWei(bal,'ether'));});
+
+
+/*
+Feature that uses smart contract
+*/
