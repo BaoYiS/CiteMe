@@ -13,3 +13,6 @@ web3.eth.getBalance(address,(err,bal)=>{console.log(web3.utils.fromWei(bal,'ethe
 /*
 Feature that uses smart contract
 */
+
+var abi=[];//abi is the json format of the smart contract from solidity
+web3.eth.
