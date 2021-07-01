@@ -1,9 +1,10 @@
 import React from 'react'
+import '../../App.css';
+
 
 const Auth = () => {
-  
   return (
-    <div>AUTH</div>
+    <div>Hi</div>
   )
 }
 
