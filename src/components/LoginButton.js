@@ -1,12 +1,7 @@
 import React from "react";
-import Button from 'react-bootstrap/Button';
 import GoogleLogin from 'react-google-login';
-{/*import {BrowserRouter, Switch, Route} from 'react-router-dom'*/}
 
 
-function clickMe(){
-  alert("You clicked me!");
-}
 
 function LoginButton(){
   const onSuccess = (res) => {
