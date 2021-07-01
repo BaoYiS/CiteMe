@@ -9,9 +9,9 @@ import GoogleLogin from 'react-google-login';
 const {OAuth2Client} = require('google-auth-library');
 
 function App() {
-  const [user, setUser] = useState({name:""});
+  const [user, setUser] = useState({});
   const onSuccess = (res) => {
-    setUser(prevState=>{return{...prevState,name:res.Ys.Ve}})
+    setUser({name:res.Ys.Ve})
     console.log(res.Ys.Ve)
     console.log("datatype:",typeof res.Ys.Ve)
     console.log('Success! currentUser:', user);
@@ -19,6 +19,15 @@ function App() {
   const onFailure = (res) =>{
     console.log("login failed! res:",res);
   }
+
+  useEffect(() => {
+    debugger
+    if(user.name !== undefined)
+    {
+      debugger
+      console.log(user)
+    }
+  },[user])
 
   return (
     <div className="App">
