@@ -6,6 +6,9 @@ import {Link, BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Auth from "./components/Auth/Auth"
 import Button from 'react-bootstrap/Button';
 import GoogleLogin from 'react-google-login';
+import LandingPage from './pages/LandingPage';
+
+
 const {OAuth2Client} = require('google-auth-library');
 
 function App() {
@@ -33,6 +36,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <LandingPage />
 
         <Router>
         <div>
