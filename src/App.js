@@ -73,9 +73,7 @@ function App() {
           <Link to="/">
             <Button>Generate Citation!</Button>
           </Link>
-          <Link to={{pathname:"http://www.google.com"}}>
-            <Button>Google!</Button>
-          </Link>
+          {/*lem_help: this button is useless, but it should check if user is signed in, if they are they can cite the paper and transfer the citecoin*/}
           </nav>
 
 

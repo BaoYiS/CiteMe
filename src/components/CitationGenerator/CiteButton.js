@@ -26,7 +26,7 @@ const CiteButton = () => {
   const onSuccess = (res) => {
     setUser(res.profileObj);
     return(<Link to="/auth"><Button>Go Auth</Button></Link>)
-
+    //lem_help: Instead of link, this should redirect to the smart contract transfer function
   }
   const onFailure = (res) =>{
     console.log("login failed! res:",res);
@@ -43,7 +43,6 @@ const CiteButton = () => {
 
     /*{user.name ? (<h1>Welcome, {user.name}</h1>) : (<h1>Hi</h1>)} //HELP, this line is not working :()*/
     <div>
-      <Link to="/auth">Go Auth</Link>
 
     <GoogleLogin
       clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
