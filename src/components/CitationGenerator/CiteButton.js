@@ -1,5 +1,4 @@
-
-import {useState,useEffect} from "react";
+import {useState, useEffect} from "react";
 import GoogleLogin from 'react-google-login';
 import {Link} from 'react-router-dom'
 import Button from 'react-bootstrap/Button';
@@ -22,38 +21,38 @@ verify().catch(console.error);*/
 
 
 const CiteButton = () => {
-  const [user, setUser] = useState({});
-  const onSuccess = (res) => {
-    setUser(res.profileObj);
-    return(<Link to="/auth"><Button>Go Auth</Button></Link>)
-    //lem_help: Instead of link, this should redirect to the smart contract transfer function
-  }
-  const onFailure = (res) =>{
-    console.log("login failed! res:",res);
-  }
-
-  useEffect(() => {
-    if(user.name !== undefined) {
-      console.log('Success! currentUser:', user.givenName,", googleId:...",user.googleId);
-      console.log(user)
+    const [user, setUser] = useState({});
+    const onSuccess = (res) => {
+        setUser(res.profileObj);
+        return (<Link to="/auth"><Button>Go Auth</Button></Link>)
+        //lem_help: Instead of link, this should redirect to the smart contract transfer function
     }
-  },[user])
+    const onFailure = (res) => {
+        console.log("login failed! res:", res);
+    }
 
-  return (
+    useEffect(() => {
+        if (user.name !== undefined) {
+            console.log('Success! currentUser:', user.givenName, ", googleId:...", user.googleId);
+            console.log(user)
+        }
+    }, [user])
 
-    /*{user.name ? (<h1>Welcome, {user.name}</h1>) : (<h1>Hi</h1>)} //HELP, this line is not working :()*/
-    <div>
+    return (
 
-    <GoogleLogin
-      clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-      buttonText="Log in with Google"
-      onSuccess={onSuccess}
-      onFailure={onFailure}
-      cookiePolicy={'single_host_origin'}
-    />
-  </div>
+        /*{user.name ? (<h1>Welcome, {user.name}</h1>) : (<h1>Hi</h1>)} //HELP, this line is not working :()*/
+        <div>
 
-  )
+            <GoogleLogin
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+                buttonText="Log in with Google"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={'single_host_origin'}
+            />
+        </div>
+
+    )
 }
 
 export default CiteButton
