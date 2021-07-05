@@ -8,6 +8,7 @@ import CiteButton from './components/CitationGenerator/CiteButton'
 import React, {useState} from "react";
 import Web3 from "web3";
 import {simpleStorageAbi} from "./abi/abis";
+import {citeCoinAbi} from "./abi/citeCoinAbi";
 //end web3component
 
 
@@ -16,15 +17,24 @@ const {OAuth2Client} = require('google-auth-library');
 const web3 = new Web3(Web3.givenProvider);
 const contractAddr = '0x72c6Dd09F9fC623fab138486Bea6c0ebeD78e4f5';
 const SimpleContract = new web3.eth.Contract(simpleStorageAbi, contractAddr);
+const contractAddrCitecoin ="0xf1ca1e8a54E2988f778DC22aC553dFf2DEFD6579"
+const CiteCoin = new web3.eth.Contract(citeCoinAbi, contractAddrCitecoin);
 //end web3component
 
 function App() {
   //web3component
   const [number, setNumber] = useState(0);
   const [getNumber, setGetNumber] = useState('0x00');
+  const [getSupply, setGetSupply] = useState('0x00');
   const handleGet = async (e) => {
     e.preventDefault();
     const result = await SimpleContract.methods.get().call();
+    setGetSupply(result);
+    console.log(result);
+  }
+  const handleGetSupply = async (e) => {
+    e.preventDefault();
+    const result = await CiteCoin.methods.totalSupply().call();
     setGetNumber(result);
     console.log(result);
   }
@@ -66,6 +76,13 @@ function App() {
         </button>
         { getNumber }
         {/*end web3component*/}
+
+        <button
+          onClick={handleGetSupply}
+          type="button" >
+          Get Total Supply
+        </button>
+        { getSupply }
 
         <Router>
         <div>
