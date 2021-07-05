@@ -4,12 +4,15 @@ import {Link, BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Auth from "./components/Auth/Auth"
 import Button from 'react-bootstrap/Button';
 import CiteButton from './components/CitationGenerator/CiteButton'
-const {OAuth2Client} = require('google-auth-library');
-
 //web3component
 import React, {useState} from "react";
 import Web3 from "web3";
 import {simpleStorageAbi} from "./abi/abis";
+//end web3component
+
+
+const {OAuth2Client} = require('google-auth-library');
+//web3component
 const web3 = new Web3(Web3.givenProvider);
 const contractAddr = '0x72c6Dd09F9fC623fab138486Bea6c0ebeD78e4f5';
 const SimpleContract = new web3.eth.Contract(simpleStorageAbi, contractAddr);
@@ -25,13 +28,25 @@ function App() {
     setGetNumber(result);
     console.log(result);
   }
+  const handleSet = async (e) => {
+    e.preventDefault();
+    const accounts = await window.ethereum.enable();
+    const account = accounts[0];
+    const gas = await SimpleContract.methods.set(number)
+                        .estimateGas();
+    const result = await SimpleContract.methods.set(number).send({
+      from: account,
+      gas
+    })
+    console.log(result);
+  }
   //end web3component
 
   return (
     <div className="App">
       <header className="App-header">
-        /*<img src={logo} className="App-logo" alt="logo" />*/
-        //web3component
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
+        {/*web3component*/}
         <form onSubmit={handleSet}>
           <label>
             Set Number:
@@ -50,7 +65,7 @@ function App() {
           Get Number
         </button>
         { getNumber }
-        //end web3component
+        {/*end web3component*/}
 
         <Router>
         <div>
