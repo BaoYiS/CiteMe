@@ -13,7 +13,7 @@ import {citeCoinAbi} from "./abi/citeCoinAbi";
 
 import NavBar from "./components/Public/Navbar"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CitationForm from "./components/CitationGenerator/CitationForm"
+import CitationFormWrapper from "./components/CitationGenerator/CitationFormWrapper"
 import Home from "./components/Home/Home"
 import * as userService from "./services/userService"
 
@@ -124,7 +124,7 @@ function App() {
                             handleGetSupply={handleGetSupply}
                             getSupply={getSupply}
                         />}/>
-                    <Route exact path="/citation" component={CitationForm}/>
+                    <Route exact path="/citation" component={CitationFormWrapper}/>
                 </Switch>
 
                 </body>
